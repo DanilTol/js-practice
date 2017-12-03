@@ -1,0 +1,24 @@
+{
+  "name": "js-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanilTol/js-practice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DanilTol/js-practice/issues"
+  },
+  "homepage": "https://github.com/DanilTol/js-practice#readme",
+  "dependencies": {
+    "anychart-nodejs": "^1.3.0-dev-preview-13",
+    "jsdom": "^11.5.1",
+    "moment": "^2.19.3"
+  }
+}
