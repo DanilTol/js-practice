@@ -1,26 +1,24 @@
 'use strict';
 
-const moment = require('moment');
 const utils = require('./utils.js');
-const chart = require('./chart.js');
 const sortings = require('./algorithms');
 
 const step = 100;
 const arrMaxLength = 1000;
-const arrMaxElement = 100000;
-const imageFormat = 'jpg';
+const arrMaxElement = 10000;
 
-let data = [];
+let data = {};
+Object.keys(sortings).forEach(key => data[key] = []);
 
 for (let i = step; i <= arrMaxLength; i = i + step) {
   let array = utils.randomArray(i, arrMaxElement);
 
-  let start = new Date().getTime();
-  sortings.merge(array);
-  let end = new Date().getTime();
+  Object.keys(sortings).forEach(key => {
+    let start = new Date().getTime();
+    let a = sortings[key](array);
+    let end = new Date().getTime();
 
-  data.push([i, end - start]);
+    console.log(key, i, end - start);
+    data[key].push({ x: i, y: end - start });
+  });
 }
-
-
-chart.exportChart(chart.getChart(data));
