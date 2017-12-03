@@ -2,8 +2,11 @@
 
 const fs = require('fs');
 const jsdom = require('jsdom').jsdom;
-const anychart = require('anychart');
-const anychartExport = require('anychart-nodejs')(anychart);
+const imageFormat = 'jpg';
+
+let d = jsdom('<body><div id="container"></div></body>');
+let anychart = require('anychart')(d.defaultView);
+let anychartExport = require('anychart-nodejs')(anychart);
 
 module.exports = {
   exportChart: chart => {
@@ -14,13 +17,9 @@ module.exports = {
       .catch(err => console.error(err.message));
   },
   getChart: data => {
-    // create default jsdom view
-    let d = jsdom('<body><div id="container"></div></body>');
-    let anychart = anychart(d.defaultView);
-
     let dataSet = anychart.data.set(data);
     let seriesData = dataSet.mapAs({ 'x': 0, 'value': 1 });
-    let chart = anychart.area3d();
+    let chart = anychart.line();
     var series = chart.area(seriesData);
 
     chart.container('container');
